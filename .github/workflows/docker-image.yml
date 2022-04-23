@@ -17,5 +17,5 @@ jobs:
     - name: Build the Docker image
       run: |
            docker build . --tag priyanshushriv/nodeapp_sensehawk:$(date +%s)
-           docker login -u priyanshushriv 
+           docker login -u priyanshushriv --password-stdin
            docker push priyanshushriv/nodeapp_sensehawk:$(date +%s)
