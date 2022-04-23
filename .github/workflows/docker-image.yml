@@ -16,6 +16,6 @@ jobs:
     - uses: actions/checkout@v3
     - name: Build the Docker image
       run: |
-           docker build . --file Dockerfile --tag priyanshushriv/nodeapp_sensehawk:$(date +%s)
+           docker build . --tag priyanshushriv/nodeapp_sensehawk:$(date +%s)
            docker login -u priyanshushriv -p 154cc676-b7f4-4ab1-92a3-45cdd58c06fd
            docker push priyanshushriv/nodeapp_sensehawk:$(date +%s)
