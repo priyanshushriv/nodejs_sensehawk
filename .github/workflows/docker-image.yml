@@ -16,10 +16,10 @@ jobs:
     - uses: actions/checkout@v3
     - name: Build the Docker image
       env:
-          COMMIT_VAR: ${{ contains(github.event.head_commit.message, '[commit var]') }}
+          VARS: $(date +%s)
       run: |
            docker logout
            docker build -t nodejsapp . 
-           docker tag nodejsapp priyanshushriv/nodeapp_sensehawk:${COMMIT_VAR}
+           docker tag nodejsapp priyanshushriv/nodeapp_sensehawk:${{VARS}}
            docker login  -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_SECRET }} docker.io
-           docker push priyanshushriv/nodeapp_sensehawk:${COMMIT_VAR}
+           docker push priyanshushriv/nodeapp_sensehawk:${{VARS}}
