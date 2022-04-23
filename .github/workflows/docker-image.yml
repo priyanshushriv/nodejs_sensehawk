@@ -18,6 +18,6 @@ jobs:
       run: |
            docker logout
            docker build -t nodejsapp . 
-           docker tag nodejsapp priyanshushriv/nodeapp_sensehawk:$(date +%s)
+           docker tag nodejsapp priyanshushriv/nodeapp_sensehawk
            docker login  -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_SECRET }} docker.io
            docker push priyanshushriv/nodeapp_sensehawk
