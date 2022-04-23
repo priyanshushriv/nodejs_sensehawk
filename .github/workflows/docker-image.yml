@@ -18,6 +18,6 @@ jobs:
       run: |
            docker logout
            docker build -t nodejsapp . 
-           docker tag nodejsapp:latest priyanshushriv/nodeapp_sensehawk:v1
-           docker login "index.docker.io" -u priyanshushriv -p p9009039993P@
-           docker push priyanshushriv/nodeapp_sensehawk:v1
+           docker tag nodejsapp priyanshushriv/nodeapp_sensehawk
+           docker login  -u priyanshushriv -p 154cc676-b7f4-4ab1-92a3-45cdd58c06fd docker.io
+           docker push priyanshushriv/nodeapp_sensehawk
