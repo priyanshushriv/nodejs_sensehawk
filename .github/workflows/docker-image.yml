@@ -15,11 +15,9 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      env:
-          VARS: $(date +%s)
       run: |
            docker logout
            docker build -t nodejsapp . 
-           docker tag nodejsapp priyanshushriv/nodeapp_sensehawk:${VARS}
+           docker tag nodejsapp priyanshushriv/nodeapp_sensehawk:${{ github.run_number }}
            docker login  -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_SECRET }} docker.io
-           docker push priyanshushriv/nodeapp_sensehawk:${VARS}
+           docker push priyanshushriv/nodeapp_sensehawk:${{ github.run_number }}
