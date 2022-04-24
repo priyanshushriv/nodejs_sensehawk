@@ -11,9 +11,6 @@ job "deployment" {
             #policy = {}
         }
 
-       
-
-
         task "deployment" {
             driver = "docker"
 
@@ -31,6 +28,22 @@ job "deployment" {
                     port "http" {
                         #static = 5000
                     }
+                }
+            }
+            service {
+                name = "deployment"
+                port = "http"
+
+                tags = [
+                    "frontend",
+                    "traefik.enable=true",
+                    "traefik.http.routers.http.rule=Path(`/`)",
+                ]
+                check {
+                    type = "http"
+                    path = "/"
+                    interval = "5s"
+                    timeout = "2s"
                 }
             }
         }
